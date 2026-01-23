@@ -46,7 +46,8 @@
         #If all of the requirements are met, change there skill and return the dictionary containing everything
             #Then break
 
-        #Otherwise have them chose again
+        #Otherwise have them chose again until they select something that works
+            #Then break
 
 
 
@@ -66,3 +67,14 @@
     #Remove the choosen weapon
     
     #Return the main dictionary
+
+
+
+
+
+
+
+#This is just here for later referance and help for logic.
+#key = ["class","strength","speed","intelegence","Dictionary for the skill with discription","inventory dictionary"]
+
+#example for class would be --> dictionary[character_name][0]
