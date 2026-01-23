@@ -1,4 +1,4 @@
-#Psuedocode for character display functions, level up function, main function
+#Psuedocode for character display functions, point distribution fuction, level up function, main function
 
 #create function display_characters, get dictionary of characters as CHARS
     #loop through CHARS as CHAR
@@ -33,3 +33,8 @@
     #display all skills in SKILLS that are for CHAR class
     #set skill in CHAR to (valid) user input for which skill they want
     #return CHAR
+
+#create function main
+    #set CHARS to empty dictionary
+    #set SKILLS to dictionary, keys classes and values lists of the two avaliable skills for that class
+    #
