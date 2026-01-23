@@ -37,4 +37,28 @@
 #create function main
     #set CHARS to empty dictionary
     #set SKILLS to dictionary, keys classes and values lists of the two avaliable skills for that class
-    #
+    #loop
+        #ask user if they would like to view, create characters, or exit
+        #if they choose view and the CHARS is not empty
+            #call function display_characters on CHARS
+            #ask user if they want to view specific character, modify or delete a character, or return to start
+            #if they choose to view specific character
+                #call function show_character on called function search on CHARS
+            #else if they choose to modify or delete
+                #set SELECT to called search function on CHARS
+                #ask user if they want to modify inventory, level up, remove, or change stats
+                #if user chooses to modify inventory
+                    #set CHARS to call function inventory on SELECT
+                #else if user chooses to level up
+                    #set SELECT to call function level_up on CHARS and SKILLS
+                #else if user chooses to remove
+                    #remove SELECT from CHARS
+                #else if user chooses to change stats
+                    #ask user if they want to change skills or scores
+                        #if user wants to change skills, set SELECT to function call skills on SELECT
+                        #else if user wants to change scores, set SELECT to function call stats on SELECT
+                #update modified character in CHARS with SELECT
+            #else if they choose to return to start
+                #go to next loop iteration
+        #if they choose create, set CHARS to run function create on CHARS
+        #if they choose exit, break out of loop
