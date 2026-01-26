@@ -2,20 +2,88 @@
 
 
 #Start off the search function (Take in the dictionary containing all of the characters):
+def search(characters):
+    char = {}
     #Put into a loop to make sure that the input is one of the options
+    while True:
         #Take their input on wether they want to search by name level or skill
+        option = simple(input("Would you like to search by skill, level, or class?:"))
         #Check to see if its one of them, if it is break
+        if option == "skill" or option == "level" or option == "class":
+            break
+        else:
+            print("That is not an option...")
 
     #Check to see which one of the three options it is
 
     #If it is a name, have them input the name they want and print out all characters that have that name
-        #Allow them to select one of the characters and set that to a variable
+    while True:
+        if option == "name":
+            #Allow them to select one of the characters and set that to a variable
+            name = simple(input("Please tell me the characters name:"))
+            if name in characters:
+                char[name] = characters[name]
+                break
+            else:
+                print("That character dosen't exist...")
+        
 
     #If it is a class, have them input the class they want and print out all characters that have that class
-        #Allow them to select one of the characters and set that to a variable
+    while True:
+        if option == "class":
+            available = []
+            #Allow them to select one of the characters and set that to a variable
+            clas = simple(input("Please tell me the class:"))
+            if clas == "archer" or clas == "knight" or clas == "wizard":
+                for key,value in characters:
+                    if value[0] == clas:
+                        available.append([key,value])
+                    else:
+                        pass
+                x = 1
+                for info in available:
+                    print(f"{x}. {info[0]}: {info[1]}")
+                    x += 1
+                while True:
+                    pick = input("Which character would you like to select? (Please type the number):").strip()
+                    if pick.isdigit() == True and pick >0 and pick < x:
+                        pick -= 1
+                        break
+                    else:
+                        print("That is not a valid option (Its not one of the numbers listed)")
+                char[available[pick[0]]] = characters[available[pick[0]]]
+                break
+            else:
+                print("That is not a class...")
 
     #If it is a level, have them input the level they want and print out all characters that have that level
-        #Allow them to select one of the characters and set that to a variable
+    while True:
+        if option == "level":
+            available = []
+            #Allow them to select one of the characters and set that to a variable
+            level = input("Please tell me the level:").strip()
+            if level == "1" or level == "2":
+                level = int(level)
+                for key,value in characters:
+                    if value[6] == level:
+                        available.append([key,value])          #RIGHT HERE  WOOOOOOOOOOOOOORK
+                    else: 
+                        pass
+                x = 1                        
+                for info in available:
+                    print(f"{x}. {info[0]}: {info[1]}")
+                    x += 1
+                while True:
+                    pick = input("Which character would you like to select? (Please type the number):").strip()
+                    if pick.isdigit() == True and pick >0 and pick < x:
+                        pick -= 1
+                        break
+                    else:
+                        print("That is not a valid option (Its not one of the numbers listed)")
+                char[available[pick[0]]] = characters[available[pick[0]]]
+                break
+            else:
+                print("That is not a class...")
 
     #Return variable
 
@@ -75,6 +143,10 @@
 
 
 #This is just here for later referance and help for logic.
-#key = ["class","strength","speed","intelegence","Dictionary for the skill with discription","inventory dictionary"]
+#key = ["class","strength","speed","intelegence","Dictionary for the skill with discription","inventory dictionary", "level"]
 
 #example for class would be --> dictionary[character_name][0]
+
+def simple(input):
+    input = (input).strip().lower()
+    return input
