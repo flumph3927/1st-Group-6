@@ -1,6 +1,6 @@
 #Psuedocode (and now code) for character display functions, point distribution fuction, level up function, main function
 
-import ryan_pseducode, random
+import ryan_pseducode
 
 #create function display_characters, get dictionary of characters as CHARS
 def display_characters(chars):
@@ -93,52 +93,9 @@ def level_up(char,skills):
     while skil not in ['1','2']:
         print('Invalid input. Try again.')
         skil=ryan_pseducode.simple(input('Would you like to use the first or the second skill?(1/2) '))
-    if skil==1:
+    if skil=='1':
         char[name][4]={skills[char[0]].keys()[0]:skills[char[0]][skills[char[0]].keys()[0]]}
-    elif skil==2:
+    elif skil=='2':
         char[name][4]={skills[char[0]].keys()[1]:skills[char[0]][skills[char[0]].keys()[1]]}
     #return CHAR
-
-#create function main
-def main():
-    #set CHARS to empty dictionary
-    chars={}
-    #set SKILLS to dictionary, keys classes and values lists of the two avaliable skills for that class
-    skills={'archer':{'Snipe':'Ranged weapon range is doubled','Pierce Armor':'Double damage of ranged weapons.'},'knight':{'Parry':'Use a melee attack to negate an enemy\'s next attack','Disarm':'Use a melee attack to remove an enemy\'s weapon.'},'wizard':{'Quick Spell':'Cast two spells as one attack.','Change Spell':'Use melee spell attacks as ranged spell attacks, and ranged spell attacks as melee spell attacks.'}}
-    print('Welcome to the RPG Character Manager.')
-    #loop
-    while True:
-        #ask user if they would like to view, create characters, or exit
-        choice=ryan_pseducode.simple(input('1. View or Modify Characters\n2. Create Character\n3. Exit\n'))
-        while choice not in ['1','2','3']:
-            print('Invalid input. Try again.')
-            choice=ryan_pseducode.simple(input('1. View or Modify Characters\n2. Create Character\n3. Exit\n'))
-        #if they choose view and the CHARS is not empty
-        if choice=='1':
-            if chars=={}:
-                print('There are no characters.')
-                continue
-            #call function display_characters on CHARS
-            display_characters(chars)
-            #ask user if they want to view specific character, modify or delete a character, or return to start
-            choice=ryan_pseducode.simple(input('1. View Specific Character\n2.Modify or Delete Character\n3. Return to Start\n'))    #do input checking here OKAY LEVI
-            #if they choose to view specific character
-                #call function show_character on called function search on CHARS
-            #else if they choose to modify or delete
-                #set SELECT to called search function on CHARS
-                #ask user if they want to modify inventory, level up, remove, or change stats
-                #if user chooses to modify inventory
-                    #set CHARS to call function inventory on SELECT
-                #else if user chooses to level up
-                    #set SELECT to call function level_up on CHARS and SKILLS
-                #else if user chooses to remove
-                    #remove SELECT from CHARS
-                #else if user chooses to change stats
-                    #ask user if they want to change skills or scores
-                        #if user wants to change skills, set SELECT to function call skills on SELECT
-                        #else if user wants to change scores, set SELECT to function call stats on SELECT
-                #update modified character in CHARS with SELECT
-            #else if they choose to return to start
-                #go to next loop iteration
-        #if they choose create, set CHARS to run function create on CHARS
-        #if they choose exit, break out of loop
+    return char
