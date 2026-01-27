@@ -84,29 +84,81 @@ def search(characters):
                 break
             else:
                 print("That is not a class...")
-
     #Return variable
+    return char
 
 
 #Create a function to allow them to change stats
+def change(character):
     #Display all of the main stats (Strength, speed, and intelligence) and there scores.
+    strength = character.key[1]
+    speed = character.key[2]
+    intelegence = character.key[3]
+    print(f"Strength: {strength}\nSpeed: {speed}\nIntelegence: {intelegence}")
     #Ask them what is the first one they want to swap
+    while True:
+        #Get valid inputs
+        #assign both of them to base things, 1 or 2
+        first = simple(input("What is the first stat that you want to swap?:"))
+        if first == "strength" or first == "speed" or first == "intelegence":
+            break
+        else: 
+            print("That is not an option...")
     #Ask them what is the second one they want to swap
-    #Get valid inputs
-
-    #assign both of them to base things, 1 or 2
+    while True:
+        #Get valid inputs
+        #assign both of them to base things, 1 or 2
+        second = simple(input("What is the first stat that you want to swap?:"))
+        if second == "strength" or first == "speed" or first == "intelegence":
+            if second != first:
+                break
+            else:
+                print("I guess you can switch it with itself???")
+                break
+        else: 
+            print("That is not an option...")
     #Then set first choose = to variable 2
-    #Set second choose = variable 1
-    #Display new stats
+    if first == "strength":
+        x = 1
+    elif first == "speed":
+        x = 2
+    else:
+        x = 3
 
+    if second == "strength":
+        y = 1
+    elif second == "speed":
+        y = 2
+    else:
+        y = 3
+
+    #Set first choice = variable 1
+    value_one = character.key[x] 
+    #Set second choice = variable 1
+    value_two = character.key[y]
+    character.key[x] = value_two
+    character.key[y] = value_one
+
+    #Display new stats
+    strength = character.key[1]
+    speed = character.key[2]
+    intelegence = character.key[3]
+    print(f"Strength: {strength}\nSpeed: {speed}\nIntelegence: {intelegence}")
     #Return main dictionary
+    return character
 
 
 #Create a function to allow them to change there skill
+def skill(character):
     #Create a dictionary of skills for there class and what they do
+    skills={'archer':{'Snipe':'Ranged weapon range is doubled','Pierce Armor':'Double damage    of ranged weapons.'},
+            'knight':{'Parry':'Use a melee attack to negate an enemy\'s next attack','Disarm':'Use a melee attack to remove an enemy\'s weapon.'},
+            'wizard':{'Quick Spell':'Cast two spells as one attack.','Change Spell':'Use melee spell attacks as ranged spell attacks, and ranged spell attacks as melee spell attacks.'}}
 
     #Take there characters class and print of the skills that are allowed for that class and there level required
-    
+    available = skills[character[0]]
+    for key,value in available:
+        print(f"{key}: {value}")
     #Put it into a while loop to make sure they choose something available
         #Ask them what of the two skills they want to use
         #Check to see if the skills exitst and if they have met the level requirements
@@ -120,21 +172,44 @@ def search(characters):
 
 
 #Create a function for inventory
+def inventor(character):
     #Create a while loop for there choice
+    while True:
         #ask them if they want to create a weapon or remove a weapon
+        answer = simple(input("Would you like to create a weapon or destroy a weapon? (Please put c or d)"))
         #If there input equals create or remove, then break
-
+        if answer == "c" or answer == "d":
+            break
         #Else have continue
+        else:
+            print("That is not a correct option, please put c or d (C for create, d for destroy)...")
 
     #Check to see which of the choices they choose
 
     #If they chose to add an item, let them create its name and its description, adding it to the dictionary
-
+    if answer == "c":
+        name = simple(input("What is the name of this item?:"))
+        description = simple(input("What is the description of this weapon?:"))
+        character[5][name] = description
     #If they chose to remove an item, create a for loop that will print of the name and the description
+    else:
+        x = 1
+        names = []
+        for key,value in character[5]:
+            print(f"{x}. {key}: {value}")
+            x += 1
+            names.append(key)
     #Get valid user input
+        while True:
+            choice = simple(input("Which of the weapons do you want to remove? (Please put only the weapon name):"))
+            if choice in names:
+                break
+            else:
+                print(f"{choice} is not an option...")
     #Remove the choosen weapon
-    
+        del character[5][choice]
     #Return the main dictionary
+    return character
 
 
 
