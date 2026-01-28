@@ -9,7 +9,7 @@ def search(characters):
         #Take their input on wether they want to search by name level or skill
         option = simple(input("Would you like to search by name, level, or class?:"))
         #Check to see if its one of them, if it is break
-        if option == "skill" or option == "level" or option == "class":
+        if option == "name" or option == "level" or option == "class":
             break
         else:
             print("That is not an option...")
@@ -37,7 +37,7 @@ def search(characters):
             #Allow them to select one of the characters and set that to a variable
             clas = simple(input("Please tell me the class:"))
             if clas == "archer" or clas == "knight" or clas == "wizard":
-                for key,value in characters:
+                for key,value in characters.enumerate():
                     if value[0] == clas:
                         available.append([key,value])
                     else:
