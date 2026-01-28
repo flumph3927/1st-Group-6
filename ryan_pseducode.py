@@ -37,7 +37,7 @@ def search(characters):
             #Allow them to select one of the characters and set that to a variable
             clas = simple(input("Please tell me the class:"))
             if clas == "archer" or clas == "knight" or clas == "wizard":
-                for key,value in characters.enumerate():
+                for key,value in characters.items():
                     if value[0] == clas:
                         available.append([key,value])
                     else:
@@ -53,7 +53,7 @@ def search(characters):
                         break
                     else:
                         print("That is not a valid option (Its not one of the numbers listed)")
-                char[available[pick[0]]] = characters[available[pick[0]]]
+                char[available[pick][0]] = characters[available[pick][0]]
                 break
             else:
                 print("That is not a class...")
@@ -68,7 +68,7 @@ def search(characters):
             level = input("Please tell me the level:").strip()
             if level == "1" or level == "2":
                 level = int(level)
-                for key,value in characters:
+                for key,value in characters.items():
                     if value[6] == level:
                         available.append([key,value])          #RIGHT HERE  WOOOOOOOOOOOOOORK
                     else: 
@@ -79,12 +79,13 @@ def search(characters):
                     x += 1
                 while True:
                     pick = input("Which character would you like to select? (Please type the number):").strip()
-                    if pick.isdigit() == True and pick >0 and pick < x:
+                    if pick.isdigit() == True and int(pick) >0 and int(pick) < x:
+                        pick = int(pick)
                         pick -= 1
                         break
                     else:
                         print("That is not a valid option (Its not one of the numbers listed)")
-                char[available[pick[0]]] = characters[available[pick[0]]]
+                char[available[pick][0]] = characters[available[pick][0]]
                 break
             else:
                 print("That is not a class...")
