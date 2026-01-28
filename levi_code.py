@@ -17,7 +17,7 @@ def show_character(char):
     #display attribute scores
     print(f'Strength: {char[name][1]}\nSpeed: {char[name][2]}\nIntelligence: {char[name][3]}\n')
     #display skills in CHAR
-    print(f'Active skill:\n{char[name][4][0]}:\n{char[name][4][list(char[name][4].keys())[0]]}\n')
+    print(f'Active skill:\n{list(char[name][4].keys())[0]}:\n{char[name][4][list(char[name][4].keys())[0]]}\n')
     #display inventory of CHAR
     print('Inventory:')
     for i in char[name][5].keys():
