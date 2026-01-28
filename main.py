@@ -47,7 +47,7 @@ def main():
                 #else if user chooses to level up
                 elif choice=='2':
                     #set SELECT to call function level_up on CHARS and SKILLS
-                    select=levi_code.level_up(select)
+                    select=levi_code.level_up(select,skills)
                 #else if user chooses to remove
                 elif choice=='3':
                     #remove SELECT from CHARS
