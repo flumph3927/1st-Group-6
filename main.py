@@ -5,7 +5,7 @@ import levi_code,ryan_pseducode,edwings_psedocode
 def main():
     #set CHARS to empty dictionary
     chars={}
-    #set SKILLS to dictionary, keys classes and values lists of the two avaliable skills for that class
+    #set SKILLS to dictionary, keys c)lasses and values lists of the two avaliable skills for that class
     skills={'archer':{'Snipe':'Ranged weapon range is doubled','Pierce Armor':'Double damage of ranged weapons.'},'knight':{'Parry':'Use a melee attack to negate an enemy\'s next attack','Disarm':'Use a melee attack to remove an enemy\'s weapon.'},'wizard':{'Quick Spell':'Cast two spells as one attack.','Change Spell':'Use melee spell attacks as ranged spell attacks, and ranged spell attacks as melee spell attacks.'}}
     print('Welcome to the RPG Character Manager.')
     #loop
@@ -51,7 +51,7 @@ def main():
                 #else if user chooses to remove
                 elif choice=='3':
                     #remove SELECT from CHARS
-                    del chars[select.keys()[0]]
+                    del chars[list(select.keys())[0]]
                 #else if user chooses to change stats
                 elif choice=='4':
                     #ask user if they want to change skills or scores
@@ -69,14 +69,14 @@ def main():
                     continue
                 #update modified character in CHARS with SELECT
                 if choice!='3':
-                    chars[select.keys()[0]]=select[select.keys()[0]]
+                    chars[list(select.keys())[0]]=select[list(select.keys())[0]]
             #else if they choose to return to start
             elif choice=='3':
                 #go to next loop iteration
                 continue
         #if they choose create, set CHARS to run function create on CHARS
         elif choice=='2':
-            chars=edwings_psedocode.create(chars)
+            chars=edwings_psedocode.create(chars,skills)
         #if they choose exit, break out of loop
         elif choice=='3':
             break
