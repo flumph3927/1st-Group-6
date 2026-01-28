@@ -7,7 +7,7 @@ def search(characters):
     #Put into a loop to make sure that the input is one of the options
     while True:
         #Take their input on wether they want to search by name level or skill
-        option = simple(input("Would you like to search by skill, level, or class?:"))
+        option = simple(input("Would you like to search by name, level, or class?:"))
         #Check to see if its one of them, if it is break
         if option == "skill" or option == "level" or option == "class":
             break
@@ -26,6 +26,8 @@ def search(characters):
                 break
             else:
                 print("That character dosen't exist...")
+        else:
+            break
         
 
     #If it is a class, have them input the class they want and print out all characters that have that class
@@ -55,6 +57,8 @@ def search(characters):
                 break
             else:
                 print("That is not a class...")
+        else:
+            break
 
     #If it is a level, have them input the level they want and print out all characters that have that level
     while True:
@@ -84,6 +88,8 @@ def search(characters):
                 break
             else:
                 print("That is not a class...")
+        else:
+            break
     #Return variable
     return char
 
@@ -91,9 +97,9 @@ def search(characters):
 #Create a function to allow them to change stats
 def change(character):
     #Display all of the main stats (Strength, speed, and intelligence) and there scores.
-    strength = character.key[1]
-    speed = character.key[2]
-    intelegence = character.key[3]
+    strength = list(character.keys())[1]
+    speed = list(character.keys())[2]
+    intelegence = list(character.keys())[3]
     print(f"Strength: {strength}\nSpeed: {speed}\nIntelegence: {intelegence}")
     #Ask them what is the first one they want to swap
     while True:
@@ -133,16 +139,16 @@ def change(character):
         y = 3
 
     #Set first choice = variable 1
-    value_one = character.key[x] 
+    value_one = list(character.keys())[x] 
     #Set second choice = variable 1
-    value_two = character.key[y]
-    character.key[x] = value_two
-    character.key[y] = value_one
+    value_two = list(character.keys())[y]
+    list(character.keys())[x] = value_two
+    list(character.keys())[y] = value_one
 
     #Display new stats
-    strength = character.key[1]
-    speed = character.key[2]
-    intelegence = character.key[3]
+    strength = list(character.keys())[1]
+    speed = list(character.keys())[2]
+    intelegence = list(character.keys())[3]
     print(f"Strength: {strength}\nSpeed: {speed}\nIntelegence: {intelegence}")
     #Return main dictionary
     return character
@@ -154,20 +160,34 @@ def skill(character):
     skills={'archer':{'Snipe':'Ranged weapon range is doubled','Pierce Armor':'Double damage    of ranged weapons.'},
             'knight':{'Parry':'Use a melee attack to negate an enemy\'s next attack','Disarm':'Use a melee attack to remove an enemy\'s weapon.'},
             'wizard':{'Quick Spell':'Cast two spells as one attack.','Change Spell':'Use melee spell attacks as ranged spell attacks, and ranged spell attacks as melee spell attacks.'}}
-
     #Take there characters class and print of the skills that are allowed for that class and there level required
-    available = skills[character[0]]
+    available = list(skills[character[0]])
+    x = 1
     for key,value in available:
-        print(f"{key}: {value}")
+        print(f"Level {x}. {key}: {value}")
+        x += 1
     #Put it into a while loop to make sure they choose something available
+    while True:
         #Ask them what of the two skills they want to use
+        while True:
+            choice = input("Which skill do you want to select? (Please put 1 or 2)").strip()
+            if choice == "1" or choice == "2":
+                break
+            else:
+                print("That is incorrect formating.")
         #Check to see if the skills exitst and if they have met the level requirements
-
+        if choice == "1":
+            skl = available[0]
+            break
         #If all of the requirements are met, change there skill and return the dictionary containing everything
             #Then break
-
+        elif choice == "2" and list(character.keys())[6] >1:
+            skl = available[1]
+            break
         #Otherwise have them chose again until they select something that works
             #Then break
+    list(character.keys())[4] = skl
+    return character
 
 
 
