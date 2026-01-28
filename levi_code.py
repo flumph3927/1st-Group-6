@@ -1,6 +1,6 @@
 #Psuedocode (and now code) for character display functions, point distribution fuction, level up function, main function
 
-import ryan_pseducode
+import ryan_pseducode, random
 
 #create function display_characters, get dictionary of characters as CHARS
 def display_characters(chars):
@@ -11,13 +11,13 @@ def display_characters(chars):
 
 #create function show_character, get character list as CHAR
 def show_character(char):
-    name=char.keys()[0]
+    name=list(char.keys())[0]
     #display name, class, and level of CHAR
     print(f'{name}\nLevel {char[name][6]} {char[name][0]}\n')
     #display attribute scores
     print(f'Strength: {char[name][1]}\nSpeed: {char[name][2]}\nIntelligence: {char[name][3]}\n')
     #display skills in CHAR
-    print(f'Active skill:\n{char[name][4][0]}:\n{char[name][4][char[name][4].keys()[0]]}\n')
+    print(f'Active skill:\n{char[name][4][0]}:\n{char[name][4][list(char[name][4].keys())[0]]}\n')
     #display inventory of CHAR
     print('Inventory:')
     for i in char[name][5].keys():
@@ -72,7 +72,7 @@ def distribute(points):
 
 #create function level_up, get character list as CHAR, get skills as SKILLS
 def level_up(char,skills):
-    name=char.keys()[0]
+    name=list(char.keys())[0]
     #if CHAR is second level
     if char[name][6]==2:
         #display character is max level
@@ -94,8 +94,8 @@ def level_up(char,skills):
         print('Invalid input. Try again.')
         skil=ryan_pseducode.simple(input('Would you like to use the first or the second skill?(1/2) '))
     if skil=='1':
-        char[name][4]={skills[char[0]].keys()[0]:skills[char[0]][skills[char[0]].keys()[0]]}
+        char[name][4]={list(skills[char[0]].keys())[0]:skills[char[0]][list(skills[char[0]].keys())[0]]}
     elif skil=='2':
-        char[name][4]={skills[char[0]].keys()[1]:skills[char[0]][skills[char[0]].keys()[1]]}
+        char[name][4]={list(skills[char[0]].keys())[1]:skills[char[0]][list(skills[char[0]].keys())[1]]}
     #return CHAR
     return char
