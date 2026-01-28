@@ -34,6 +34,6 @@ def create(characters,skills):
     #print skill and say that to unlock another one they need to level up
     print("You have one skill right now, but if you level up, you will unlock more")
     #add skill to character information
-    characters[name][4]={skills[clas].keys()[0]:skills[clas][skills[clas].keys()[0]]}
+    characters[name][4]={list(skills[clas].keys())[0]:skills[clas][list(skills[clas].keys())[0]]}
     #return chaacter dictionary
     return characters
