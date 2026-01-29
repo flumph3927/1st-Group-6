@@ -48,7 +48,8 @@ def search(characters):
                     x += 1
                 while True:
                     pick = input("Which character would you like to select? (Please type the number):").strip()
-                    if pick.isdigit() == True and pick >0 and pick < x:
+                    if pick.isdigit() == True and int(pick) >0 and int(pick) < x:
+                        pick = int(pick)
                         pick -= 1
                         break
                     else:
