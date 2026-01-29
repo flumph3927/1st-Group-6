@@ -197,7 +197,7 @@ def skill(character):
 
 #Create a function for inventory
 def inventor(character):
-    cname=character[cname][0]
+    cname=list(character.keys())[0]
     #Create a while loop for there choice
     while True:
         #ask them if they want to create a weapon or remove a weapon
