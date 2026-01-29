@@ -212,7 +212,7 @@ def inventor(character):
     if answer == "c":
         name = simple(input("What is the name of this item?:"))
         description = simple(input("What is the description of this weapon?:"))
-        character[5][name] = description
+        character[name][5] = description
     #If they chose to remove an item, create a for loop that will print of the name and the description
     else:
         x = 1
