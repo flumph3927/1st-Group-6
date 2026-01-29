@@ -82,11 +82,12 @@ def level_up(char,skills):
     #set CHAR level to 2
     char[name][6]=2
     #add function distribute called on random number between 5 and 10 to CHAR scores
+    distr=distribute(random.randint(5,10))
     for i in range(3):
-        char[name][i] += distribute[i]
+        char[name][i+1] += distr[i]
     #display all skills in SKILLS that are for CHAR class
     print('Skills Avaliable:')
-    for i,x in skills[char[0]].enumerate():
+    for i,x in skills[char[name][0]].items():
         print(f'{i}: {x}')
     #set skill in CHAR to (valid) user input for which skill they want
     skil=ryan_pseducode.simple(input('Would you like to use the first or the second skill?(1/2) '))
@@ -94,8 +95,8 @@ def level_up(char,skills):
         print('Invalid input. Try again.')
         skil=ryan_pseducode.simple(input('Would you like to use the first or the second skill?(1/2) '))
     if skil=='1':
-        char[name][4]={list(skills[char[0]].keys())[0]:skills[char[0]][list(skills[char[0]].keys())[0]]}
+        char[name][4]={list(skills[char[name][0]].keys())[0]:skills[char[name][0]][list(skills[char[name][0]].keys())[0]]}
     elif skil=='2':
-        char[name][4]={list(skills[char[0]].keys())[1]:skills[char[0]][list(skills[char[0]].keys())[1]]}
+        char[name][4]={list(skills[char[name][0]].keys())[1]:skills[char[name][0]][list(skills[char[name][0]].keys())[1]]}
     #return CHAR
     return char
