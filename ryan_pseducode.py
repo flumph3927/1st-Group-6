@@ -17,8 +17,14 @@ def search(characters):
     #Check to see which one of the three options it is
 
     #If it is a name, have them input the name they want and print out all characters that have that name
+    check = False
     while True:
-        if option == "name":
+        for value in characters.values():
+            if value[0] == option:
+                check = True
+            else:
+                pass
+        if option == "name" and check == True:
             #Allow them to select one of the characters and set that to a variable
             name = simple(input("Please tell me the characters name:"))
             if name in characters:
@@ -32,7 +38,12 @@ def search(characters):
 
     #If it is a class, have them input the class they want and print out all characters that have that class
     while True:
-        if option == "class":
+        for value in characters.values():
+            if value[0] == option:
+                check = True
+            else:
+                pass
+        if option == "class" and check == True:
             available = []
             #Allow them to select one of the characters and set that to a variable
             clas = simple(input("Please tell me the class:"))
@@ -63,7 +74,12 @@ def search(characters):
 
     #If it is a level, have them input the level they want and print out all characters that have that level
     while True:
-        if option == "level":
+        for value in characters.values():
+            if value[0] == option:
+                check = True
+            else:
+                pass
+        if option == "level" and check == True:
             available = []
             #Allow them to select one of the characters and set that to a variable
             level = input("Please tell me the level:").strip()
