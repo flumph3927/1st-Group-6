@@ -43,7 +43,7 @@ def main():
                 #if user chooses to modify inventory
                 if choice == '1':
                     #set CHARS to call function inventory on SELECT
-                    select=ryan_pseducode.inventory(select)
+                    select=ryan_pseducode.inventor(select)
                 #else if user chooses to level up
                 elif choice=='2':
                     #set SELECT to call function level_up on CHARS and SKILLS
