@@ -89,7 +89,7 @@ def search(characters):
                 char[available[pick][0]] = characters[available[pick][0]]
                 break
             else:
-                print("That is not a class...")
+                print("That is not a level...")
         else:
             break
     #Return variable
