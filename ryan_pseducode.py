@@ -98,10 +98,11 @@ def search(characters):
 
 #Create a function to allow them to change stats
 def change(character):
+    cname=list(character.keys())[0]
     #Display all of the main stats (Strength, speed, and intelligence) and there scores.
-    strength = list(character.keys())[1]
-    speed = list(character.keys())[2]
-    intelegence = list(character.keys())[3]
+    strength = character[cname][1]
+    speed = character[cname][2]
+    intelegence = character[cname][3]
     print(f"Strength: {strength}\nSpeed: {speed}\nIntelegence: {intelegence}")
     #Ask them what is the first one they want to swap
     while True:
@@ -141,16 +142,16 @@ def change(character):
         y = 3
 
     #Set first choice = variable 1
-    value_one = list(character.keys())[x] 
+    value_one = character[cname][x] 
     #Set second choice = variable 1
-    value_two = list(character.keys())[y]
-    list(character.keys())[x] = value_two
-    list(character.keys())[y] = value_one
+    value_two = character[cname][y]
+    character[cname][x] = value_two
+    character[cname][y] = value_one
 
     #Display new stats
-    strength = list(character.keys())[1]
-    speed = list(character.keys())[2]
-    intelegence = list(character.keys())[3]
+    strength = character[cname][1]
+    speed = character[cname][2]
+    intelegence = character[cname][3]
     print(f"Strength: {strength}\nSpeed: {speed}\nIntelegence: {intelegence}")
     #Return main dictionary
     return character
@@ -158,6 +159,7 @@ def change(character):
 
 #Create a function to allow them to change there skill
 def skill(character):
+    cname=list(character.keys())[0]
     #Create a dictionary of skills for there class and what they do
     skills={'archer':{'Snipe':'Ranged weapon range is doubled','Pierce Armor':'Double damage    of ranged weapons.'},
             'knight':{'Parry':'Use a melee attack to negate an enemy\'s next attack','Disarm':'Use a melee attack to remove an enemy\'s weapon.'},
@@ -183,28 +185,31 @@ def skill(character):
             break
         #If all of the requirements are met, change there skill and return the dictionary containing everything
             #Then break
-        elif choice == "2" and list(character.keys())[6] >1:
+        elif choice == "2" and character[cname][6] >1:
             skl = available[1]
             break
         #Otherwise have them chose again until they select something that works
             #Then break
-    list(character.keys())[4] = skl
+    character[cname][4] = skl
     return character
 
 
 
 #Create a function for inventory
 def inventor(character):
+    cname=character[cname][0]
     #Create a while loop for there choice
     while True:
         #ask them if they want to create a weapon or remove a weapon
         answer = simple(input("Would you like to create a weapon or destroy a weapon? (Please put c or d)"))
         #If there input equals create or remove, then break
-        if answer == "c" or answer == "d":
+        if answer == "c":
+            break
+        elif answer == "d" and character[cname][5] != {}:
             break
         #Else have continue
         else:
-            print("That is not a correct option, please put c or d (C for create, d for destroy)...")
+            print("That is not a correct option, please put c or d. If its d, make sure you have weapons to destroy. (C for create, d for destroy)...")
 
     #Check to see which of the choices they choose
 
@@ -212,12 +217,12 @@ def inventor(character):
     if answer == "c":
         name = simple(input("What is the name of this item?:"))
         description = simple(input("What is the description of this weapon?:"))
-        character[name][5] = description
+        character[cname][5][name] = description
     #If they chose to remove an item, create a for loop that will print of the name and the description
     else:
         x = 1
         names = []
-        for key,value in character[5]:
+        for key,value in character[cname][5].items():
             print(f"{x}. {key}: {value}")
             x += 1
             names.append(key)
@@ -229,7 +234,7 @@ def inventor(character):
             else:
                 print(f"{choice} is not an option...")
     #Remove the choosen weapon
-        del character[5][choice]
+        del character[cname][5][choice]
     #Return the main dictionary
     return character
 
