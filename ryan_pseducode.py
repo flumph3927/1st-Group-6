@@ -19,12 +19,7 @@ def search(characters):
     #If it is a name, have them input the name they want and print out all characters that have that name
     check = False
     while True:
-        for value in characters.values():
-            if value[0] == option:
-                check = True
-            else:
-                pass
-        if option == "name" and check == True:
+        if option == "name":
             #Allow them to select one of the characters and set that to a variable
             name = simple(input("Please tell me the characters name:"))
             if name in characters:
@@ -38,35 +33,38 @@ def search(characters):
 
     #If it is a class, have them input the class they want and print out all characters that have that class
     while True:
-        for value in characters.values():
-            if value[0] == option:
-                check = True
-            else:
-                pass
-        if option == "class" and check == True:
+        if option == "class":
             available = []
             #Allow them to select one of the characters and set that to a variable
             clas = simple(input("Please tell me the class:"))
             if clas == "archer" or clas == "knight" or clas == "wizard":
-                for key,value in characters.items():
-                    if value[0] == clas:
-                        available.append([key,value])
+                for value in characters.values():
+                    if list(value)[0] == clas:
+                        check = True
                     else:
                         pass
-                x = 1
-                for info in available:
-                    print(f"{x}. {info[0]}: {info[1]}")
-                    x += 1
-                while True:
-                    pick = input("Which character would you like to select? (Please type the number):").strip()
-                    if pick.isdigit() == True and int(pick) >0 and int(pick) < x:
-                        pick = int(pick)
-                        pick -= 1
-                        break
-                    else:
-                        print("That is not a valid option (Its not one of the numbers listed)")
-                char[available[pick][0]] = characters[available[pick][0]]
-                break
+                if check == True:
+                    for key,value in characters.items():
+                        if value[0] == clas:
+                            available.append([key,value])
+                        else:
+                            pass
+                    x = 1                   
+                    for info in available:
+                        print(f'{x}. {info[0].title()}: level {info[1][-1]} {info[1][0]}')
+                        x += 1
+                    while True:
+                        pick = input("Which character would you like to select? (Please type the number):").strip()
+                        if pick.isdigit() == True and int(pick) >0 and int(pick) < x:
+                            pick = int(pick)
+                            pick -= 1
+                            break
+                        else:
+                            print("That is not a valid option (Its not one of the numbers listed)")
+                    char[available[pick][0]] = characters[available[pick][0]]
+                    break
+                else:
+                    print("You don't have a character with that class...")
             else:
                 print("That is not a class...")
         else:
@@ -74,36 +72,39 @@ def search(characters):
 
     #If it is a level, have them input the level they want and print out all characters that have that level
     while True:
-        for value in characters.values():
-            if value[0] == option:
-                check = True
-            else:
-                pass
-        if option == "level" and check == True:
+        if option == "level":
             available = []
             #Allow them to select one of the characters and set that to a variable
             level = input("Please tell me the level:").strip()
             if level == "1" or level == "2":
                 level = int(level)
-                for key,value in characters.items():
-                    if value[6] == level:
-                        available.append([key,value])          #RIGHT HERE  WOOOOOOOOOOOOOORK
-                    else: 
-                        pass
-                x = 1                        
-                for info in available:
-                    print(f"{x}. {info[0]}: {info[1]}")
-                    x += 1
-                while True:
-                    pick = input("Which character would you like to select? (Please type the number):").strip()
-                    if pick.isdigit() == True and int(pick) >0 and int(pick) < x:
-                        pick = int(pick)
-                        pick -= 1
-                        break
+                for value in characters.values():
+                    if list(value)[6] == level:
+                        check = True
                     else:
-                        print("That is not a valid option (Its not one of the numbers listed)")
-                char[available[pick][0]] = characters[available[pick][0]]
-                break
+                        pass
+                if check == True:
+                    for key,value in characters.items():
+                        if value[6] == level:
+                            available.append([key,value])      
+                        else: 
+                            pass
+                    x = 1                        
+                    for info in available:
+                        print(f'{x}. {info[0].title()}: level {info[1][-1]} {info[1][0]}')
+                        x += 1
+                    while True:
+                        pick = input("Which character would you like to select? (Please type the number):").strip()
+                        if pick.isdigit() == True and int(pick) >0 and int(pick) < x:
+                            pick = int(pick)
+                            pick -= 1
+                            break
+                        else:
+                            print("That is not a valid option (Its not one of the numbers listed)")
+                    char[available[pick][0]] = characters[available[pick][0]]
+                    break
+                else:
+                    print("You don't have a character with that level")
             else:
                 print("That is not a level...")
         else:
