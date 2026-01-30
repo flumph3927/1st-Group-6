@@ -10,7 +10,7 @@ def main():
     print('Welcome to the RPG Character Manager.')
     #loop
     while True:
-        print('\n'*50)
+        print('\n'*5)
         #ask user if they would like to view, create characters, or exit
         choice=ryan_pseducode.simple(input('\n1. View or Modify Characters\n2. Create Character\n3. Exit\n'))
         while choice not in ['1','2','3']:
