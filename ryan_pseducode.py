@@ -134,8 +134,8 @@ def change(character):
     while True:
         #Get valid inputs
         #assign both of them to base things, 1 or 2
-        second = simple(input("What is the first stat that you want to swap?:"))
-        if second == "strength" or first == "speed" or first == "intelegence":
+        second = simple(input("What is the second stat that you want to swap?:"))
+        if second == "strength" or second == "speed" or second == "intelegence":
             if second != first:
                 break
             else:
@@ -182,9 +182,9 @@ def skill(character):
             'knight':{'Parry':'Use a melee attack to negate an enemy\'s next attack','Disarm':'Use a melee attack to remove an enemy\'s weapon.'},
             'wizard':{'Quick Spell':'Cast two spells as one attack.','Change Spell':'Use melee spell attacks as ranged spell attacks, and ranged spell attacks as melee spell attacks.'}}
     #Take there characters class and print of the skills that are allowed for that class and there level required
-    available = list(skills[character[0]])
+    available = skills[list(character.values())[0][0]]
     x = 1
-    for key,value in available:
+    for key,value in available.items():
         print(f"Level {x}. {key}: {value}")
         x += 1
     #Put it into a while loop to make sure they choose something available
@@ -198,14 +198,16 @@ def skill(character):
                 print("That is incorrect formating.")
         #Check to see if the skills exitst and if they have met the level requirements
         if choice == "1":
-            skl = available[0]
+            skl = {list(available.keys())[0]:available[list(available.keys())[0]]}
             break
         #If all of the requirements are met, change there skill and return the dictionary containing everything
             #Then break
         elif choice == "2" and character[cname][6] >1:
-            skl = available[1]
+            skl = {list(available.keys())[1]:available[list(available.keys())[1]]}
             break
         #Otherwise have them chose again until they select something that works
+        else:
+            print('You do not meet the requirements for this skill.')
             #Then break
     character[cname][4] = skl
     return character
