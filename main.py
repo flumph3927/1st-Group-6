@@ -56,10 +56,10 @@ def main():
                 #else if user chooses to change stats
                 elif choice=='4':
                     #ask user if they want to change skills or scores
-                    choice=ryan_pseducode.simple(input('\n1.Change skills\n2.Change scores\n'))
+                    choice=ryan_pseducode.simple(input('\n1.Change skills\n2.Swap scores\n'))
                     while choice not in ['1','2']:
                         print('\nInvalid input. Try again.')
-                        choice=ryan_pseducode.simple(input('\n1.Change skills\n2.Change scores\n'))
+                        choice=ryan_pseducode.simple(input('\n1.Change skills\n2.Swap scores\n'))
                         #if user wants to change skills, set SELECT to function call skills on SELECT
                     if choice=='1':
                         select=ryan_pseducode.skill(select)
