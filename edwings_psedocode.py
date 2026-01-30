@@ -28,13 +28,11 @@ def create(characters,skills):
         clas='wizard'
         #add class to character information
         characters[name][0] = clas
-    time.sleep(1)
     #print stats
     print("\nYour stats are:\nStrength\nSpeed\nIntelligence")
     #add stats to character information
     characters[name][1], characters[name][2],characters[name][3] = levi_code.distribute(random.randint(5,10))
     #print skill and say that to unlock another one they need to level up
-    time.sleep(1)
     print("\nYou have one skill right now, but if you level up, you will unlock more")
     #add skill to character information
     characters[name][4]={list(skills[clas].keys())[0]:skills[clas][list(skills[clas].keys())[0]]}
