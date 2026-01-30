@@ -10,23 +10,24 @@ def main():
     print('Welcome to the RPG Character Manager.')
     #loop
     while True:
+        print('\n'*5)
         #ask user if they would like to view, create characters, or exit
-        choice=ryan_pseducode.simple(input('1. View or Modify Characters\n2. Create Character\n3. Exit\n'))
+        choice=ryan_pseducode.simple(input('\n1. View or Modify Characters\n2. Create Character\n3. Exit\n'))
         while choice not in ['1','2','3']:
-            print('Invalid input. Try again.')
-            choice=ryan_pseducode.simple(input('1. View or Modify Characters\n2. Create Character\n3. Exit\n'))
+            print('\nInvalid input. Try again.')
+            choice=ryan_pseducode.simple(input('\n1. View or Modify Characters\n2. Create Character\n3. Exit\n'))
         #if they choose view and the CHARS is not empty
         if choice=='1':
             if chars=={}:
-                print('There are no characters.')
+                print('\nThere are no characters.')
                 continue
             #call function display_characters on CHARS
             levi_code.display_characters(chars)
             #ask user if they want to view specific character, modify or delete a character, or return to start
-            choice=ryan_pseducode.simple(input('1. View Specific Character\n2.Modify or Delete Character\n3. Return to Start\n'))
+            choice=ryan_pseducode.simple(input('\n1. View Specific Character\n2.Modify or Delete Character\n3. Return to Start\n'))
             if choice not in ['1','2','3']:
-                print('Invalid input. Try again')
-                choice=ryan_pseducode.simple(input('1. View Specific Character\n2.Modify or Delete Character\n3. Return to Start\n'))
+                print('\nInvalid input. Try again')
+                choice=ryan_pseducode.simple(input('\n1. View Specific Character\n2.Modify or Delete Character\n3. Return to Start\n'))
             #if they choose to view specific character
             if choice=='1':
                 #call function show_character on called function search on CHARS
@@ -36,10 +37,10 @@ def main():
                 #set SELECT to called search function on CHARS
                 select=ryan_pseducode.search(chars)
                 #ask user if they want to modify inventory, level up, remove, or change stats(or exit)
-                choice=ryan_pseducode.simple(input('1. Modify inventory\n2. Level up\n3. Remove\n4. Change stats\n5. Exit\n'))
+                choice=ryan_pseducode.simple(input('\n1. Modify inventory\n2. Level up\n3. Remove\n4. Change stats\n5. Exit\n'))
                 if choice not in ['1','2','3','4','5']:
-                    print('Invalid input. Try again.')
-                    choice=ryan_pseducode.simple(input('1. Modify inventory\n2. Level up\n3. Remove\n4. Change stats\n5. Exit\n'))
+                    print('\nInvalid input. Try again.')
+                    choice=ryan_pseducode.simple(input('\n1. Modify inventory\n2. Level up\n3. Remove\n4. Change stats\n5. Exit\n'))
                 #if user chooses to modify inventory
                 if choice == '1':
                     #set CHARS to call function inventory on SELECT
@@ -55,10 +56,10 @@ def main():
                 #else if user chooses to change stats
                 elif choice=='4':
                     #ask user if they want to change skills or scores
-                    choice=ryan_pseducode.simple(input('1.Change skills\n2.Change scores\n'))
+                    choice=ryan_pseducode.simple(input('\n1.Change skills\n2.Change scores\n'))
                     while choice not in ['1','2']:
-                        print('Invalid input. Try again.')
-                        choice=ryan_pseducode.simple(input('1.Change skills\n2.Change scores\n'))
+                        print('\nInvalid input. Try again.')
+                        choice=ryan_pseducode.simple(input('\n1.Change skills\n2.Change scores\n'))
                         #if user wants to change skills, set SELECT to function call skills on SELECT
                     if choice=='1':
                         select=ryan_pseducode.skill(select)
