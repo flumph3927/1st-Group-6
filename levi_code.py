@@ -14,11 +14,11 @@ def display_characters(chars):
 def show_character(char):
     name=list(char.keys())[0]
     #display name, class, and level of CHAR
-    print(f'\n{name}\nLevel {char[name][6]} {char[name][0]}\n')
+    print(f'\n{name.title()}\nLevel {char[name][6]} {char[name][0]}\n')
     #display attribute scores
     print(f'Strength: {char[name][1]}\nSpeed: {char[name][2]}\nIntelligence: {char[name][3]}\n')
     #display skills in CHAR
-    print(f'Active skill:\n{list(char[name][4].keys())[0]}:\n{char[name][4][list(char[name][4].keys())[0]]}\n')
+    print(f'Active skill:\n{list(char[name][4].keys())[0]}: {char[name][4][list(char[name][4].keys())[0]]}\n')
     #display inventory of CHAR
     print('Inventory:')
     for i in char[name][5].keys():
