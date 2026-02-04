@@ -24,10 +24,10 @@ def main():
             #call function display_characters on CHARS
             levi_code.display_characters(chars)
             #ask user if they want to view specific character, modify or delete a character, or return to start
-            choice=ryan_pseducode.simple(input('\n1. View Specific Character\n2.Modify or Delete Character\n3. Return to Start\n'))
+            choice=ryan_pseducode.simple(input('\n1. View Specific Character\n2. Modify or Delete Character\n3. Return to Start\n'))
             if choice not in ['1','2','3']:
                 print('\nInvalid input. Try again')
-                choice=ryan_pseducode.simple(input('\n1. View Specific Character\n2.Modify or Delete Character\n3. Return to Start\n'))
+                choice=ryan_pseducode.simple(input('\n1. View Specific Character\n2. Modify or Delete Character\n3. Return to Start\n'))
             #if they choose to view specific character
             if choice=='1':
                 #call function show_character on called function search on CHARS
